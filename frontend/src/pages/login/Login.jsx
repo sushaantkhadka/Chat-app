@@ -1,8 +1,18 @@
 import React from "react";
 import { styles } from "../../styles";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  })
+
+  const _handleSubmit = async (e) => {
+    e.preventDefault();
+  }
+
   return (
     <>
       <div className="flex items-center justify-center">
@@ -14,17 +24,21 @@ const Login = () => {
             <span className="text-[#4daecb] font-bold"> TeamCHAT</span>
           </h1>
 
-          <form>
+          <form onSubmit={_handleSubmit}>
             <div className="flex flex-col justify-center items-center mt-5">
               <input
                 type="text"
                 className={`${styles.input}`}
                 placeholder="Username"
+                value={inputs.username}
+                onChange={(e) => setInputs({...inputs, username:e.target.value})}
               />
               <input
                 type="password"
                 className={`${styles.input}`}
                 placeholder="Password"
+                value={inputs.password}
+                onChange={(e) => setInputs({...inputs, password:e.target.value})}
               />
 
               <input
