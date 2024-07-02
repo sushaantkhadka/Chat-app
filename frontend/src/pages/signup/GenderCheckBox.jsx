@@ -1,6 +1,6 @@
 import { styles } from "../../styles"
 
-const GenderCheckBox = () => {
+const GenderCheckBox = ({onCheckBoxChange, selectedGender}) => {
   return (
     <>
     <div className="flex justify-between items-center gap-5 font-semibold">
@@ -11,7 +11,9 @@ const GenderCheckBox = () => {
                     <span>Male</span>
                     <input
                       type="radio"
-                      className="h-5 w-5"
+                      className={`h-5 w-5 ${selectedGender === "male" ? "selected" : "" }`}
+                      checked={selectedGender==='male'}
+                      onChange={() => onCheckBoxChange("male")}
                     />
                   </label>
                 </div>
@@ -23,7 +25,9 @@ const GenderCheckBox = () => {
                     <span>Female</span>
                     <input
                       type="radio"
-                      className="text-gray-500 h-5 w-5"
+                      className={`h-5 w-5 ${selectedGender === "female" ? "selected" : "" }`}
+                      checked={selectedGender==='female'}
+                      onChange={() => onCheckBoxChange("female")}
                     />
                   </label>
                 </div>

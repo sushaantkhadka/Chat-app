@@ -1,5 +1,6 @@
 import React from "react";
 import { styles } from "../../styles";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -36,13 +37,13 @@ const Login = () => {
           </form>
 
           <p className="text-[#b5b6b9] ">
-            <a href="/" className="hover:text-[#4daecb]">
+            <Link to={"/"} className="hover:text-[#4daecb]">
               Forgot Password?{" "}
-            </a>{" "}
+            </Link>{" "}
             <strong className="text-[#333333]">Or</strong>{" "}
-            <a href="/" className="hover:text-[#4daecb]">
+            <Link to={"/signup"} className="hover:text-[#4daecb]">
               Signup
-            </a>
+            </Link>
           </p>
         </div>
       </div>
