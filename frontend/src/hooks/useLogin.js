@@ -1,32 +1,32 @@
 import React, { useState } from 'react'
+import { useAuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
+
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const {setAuthUser} =  useAuthContext();
 
-  const login = async ({
-    username,
-    password,
-  }) => {
+  const login = async ({username,password}) => {
     const success = _handleInputErrors({
-        username,
-        password,
-    })
-    
-    if(!success) return;
+      username,
+      password,
+    });
+
+    if (!success) return
 
     setLoading(true);
     try {
         const res = await fetch("/api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              username,
-              password,
-            }),
+            body: JSON.stringify({username,password}),
           });
 
           const data = await res.json();
+
+          // const username = await data.username
+
           if (data.error) {
             throw new Error(data.error);
           }
@@ -40,22 +40,19 @@ export const useLogin = () => {
     } finally {
         setLoading(false);
       }
-  }
+  };
+
+  return {loading,login}
 }
 
 function _handleInputErrors({
-    username,
-    password,
-  }) {
-    if (!username || !password) {
-      toast.error("Please fill all fields");
-      return false;
-    }
-  
-    if (password !== confirmPassword) {
-      toast.error("Username or Password is incorrect");
-      return false;
-    }
-  
-    return true;
+  username,
+  password,
+}) {
+  if (!username || !password) {
+    toast.error("Please fill all fields");
+    return false;
   }
+
+  return true;
+}

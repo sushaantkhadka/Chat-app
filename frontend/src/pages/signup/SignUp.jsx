@@ -71,8 +71,11 @@ const SignUp = () => {
              <GenderCheckBox onCheckBoxChange={_handleCheckBoxChange} selectedGender={inputs.gender} />
 
              <button
+                disabled={loading}
                 className={`${styles.buttton} m-4 px-6 py-4 w-[90%] text-medium font-bold text-[#dde2e8] border-none 
-               bg-[#4daecb] rounded-[50px]`}>Sign Up</button>
+               bg-[#4daecb] rounded-[50px]`}>
+                {loading ? "Loading..." : "Sign Up"}
+               </button>
             </div>
           </form>
 

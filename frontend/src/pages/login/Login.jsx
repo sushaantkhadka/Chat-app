@@ -2,16 +2,18 @@ import React from "react";
 import { styles } from "../../styles";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useLogin } from "../../hooks/useLogin";
 
 const Login = () => {
-  const [inputs, setInputs] = useState({
-    username: "",
-    password: "",
-  })
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { loading, login } = useLogin();
 
   const _handleSubmit = async (e) => {
     e.preventDefault();
-  }
+    await login({username,password});
+  };
 
   return (
     <>
@@ -30,23 +32,25 @@ const Login = () => {
                 type="text"
                 className={`${styles.input}`}
                 placeholder="Username"
-                value={inputs.username}
-                onChange={(e) => setInputs({...inputs, username:e.target.value})}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <input
                 type="password"
                 className={`${styles.input}`}
                 placeholder="Password"
-                value={inputs.password}
-                onChange={(e) => setInputs({...inputs, password:e.target.value})}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
 
-              <input
-                type="button"
+              <button
+                disabled={loading}
                 className={`${styles.buttton} m-4 px-6 py-4 w-[90%] text-medium font-bold text-[#dde2e8] border-none 
                bg-[#4daecb] rounded-[50px]`}
-                value="Login"
-              />
+              >
+                {loading ? "Loading.." : "Login"}
+              </button>
+
             </div>
           </form>
 
