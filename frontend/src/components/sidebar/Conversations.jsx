@@ -4,16 +4,16 @@ import useGetConversations from '../../hooks/useGetConversations'
 
 export default function Conversations() {
 
-  const {loading, conversations} = useGetConversations();
+  const {conversations} = useGetConversations();
   console.log("Conversations:", conversations);
 
   return (
     <div className='py-2 flex flex-col overflow-auto'>
-        {conversations.map((conversation,idx) => (
+        {conversations.map((conversation, idx) => (
           <Conversation
           key={conversation._id}
           conversation={conversation}
-          lastIdx = {idx === conversation.length-1}
+          lastIdx = {idx === conversation.length - 1}
           />
         ))}
     </div>
