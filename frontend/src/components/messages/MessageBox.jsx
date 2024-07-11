@@ -14,7 +14,7 @@ export default function MessageBox() {
   }, [setSelectedConversation])
 
   return (
-    <div className='md:min-w-[450px] flex flex-col '>
+    <div className='md:min-w-[450px] max-w-[450px] flex flex-col '>
       {!selectedConversation ? (<NoChatSelected/>) : (
         <>
         <div className={`${styles.primary} rounded-none py-2 px-6 text-[#b2b3b8]`} >

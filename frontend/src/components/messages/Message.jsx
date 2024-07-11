@@ -29,7 +29,7 @@ export default function Message({ message }) {
                 </h5>
               </div>
               <div className="justify-end items-center inline-flex mb-2.5">
-                <h6 className="text-gray-500 text-xs font-normal leading-4 py-1">
+                <h6 className="text-gray-500 text-xs font-normal leading-4 pt-1">
                   {formattedTime}
                 </h6>
               </div>
@@ -37,14 +37,14 @@ export default function Message({ message }) {
           </div>
         </div>
       ) : (
-        <div className="flex gap-2.5 justify-end pb-40">
+        <div className="flex gap-2.5 justify-end">
           <div className="">
             <div className="grid mb-2">
               <h5 className="text-right text-gray-900 text-sm font-semibold leading-snug pb-1">
                 You
               </h5>
-              <div className="px-3 py-2 bg-indigo-600 rounded">
-                <h2 className="text-white text-sm font-normal leading-snug">
+              <div className="px-3 py-2 bg-indigo-600 rounded ">
+                <h2 className="text-white text-sm font-normal leading-snug ">
                   {message.message}
                 </h2>
               </div>
