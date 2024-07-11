@@ -32,7 +32,7 @@ const Login = () => {
                 type="text"
                 className={`${styles.input}`}
                 placeholder="Username"
-                value={username}
+                value={username.toLowerCase()}
                 onChange={(e) => setUsername(e.target.value)}
               />
               <input

@@ -49,7 +49,7 @@ const SignUp = () => {
                 type="text"
                 className={`${styles.input}`}
                 placeholder="Username"
-                value={inputs.username}
+                value={inputs.username.toLowerCase()}
                 onChange={(e) => setInputs({...inputs, username:e.target.value})}
               />
 
