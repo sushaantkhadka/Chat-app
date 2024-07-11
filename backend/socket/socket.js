@@ -1,5 +1,5 @@
-import { server } from "socket.io";
-import http, { Server } from "http";
+import { Server } from "socket.io";
+import http from "http";
 import express from "express";
 
 const app = express();
@@ -14,6 +14,8 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
+
+  
 
   socket.on("disconnected", () => {
     console.log("user disconnected", socket.id);
